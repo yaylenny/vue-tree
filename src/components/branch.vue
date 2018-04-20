@@ -2,7 +2,7 @@
   import { registerNode } from "../trees.js";
   import branch from "./branch.vue";
   import leaf from "./leaf.vue";
-  // import { range } from "lodash";
+
   export default{
     name: 'tree-branch',
     props: {
@@ -29,21 +29,9 @@
       'tree-leaf': leaf
     },
     computed:{
-      // emptyRange(){
-      //   let i=this.level, ret=[];
-      //   while( i > 0 ){
-      //     ret.push('');
-      //     i--;
-      //   }
-      //   return ret;
-      //   // return range( this.level ).map( n=>'' );
-      // },
       elbowIcon(){
         if( this.nodes ) return this.ico[ this.isExpanded ? 'expand' : 'retract'];
         return false;
-      },
-      isActive(){
-
       },
       nodeItems(){
         return this.source || this.nodes;
@@ -53,7 +41,6 @@
         if( this.source ){// this is the root node but might not have a root setup
           if( this.root ){
             label=this.root.label;
-
           }
         }
         if( !label ) return false;
@@ -65,9 +52,6 @@
       }
     },
     methods:{
-      // iconClass( name ){
-      //   return `${this.iconBase} ${this.iconPrefix}${name}`;
-      // },
       toggle(){
         if( this.nodes ){
           this.isExpanded=!this.isExpanded;
@@ -83,7 +67,6 @@
     },
     created(){
       this.nid=registerNode( this, this.tid );
-      console.log( 'node id', this.nid );
     },
     watch:{}
   }
@@ -105,7 +88,6 @@
       @select="selectNode">
     </tree-leaf>
 
-
     <div class="leaf-nodes" v-if="nodeItems" v-show="isExpanded">
       <tree-branch
         v-for="node in nodeItems"
@@ -121,5 +103,6 @@
         @select="selectPassThrough">
       </tree-branch>
     </div>
+    
   </div>
 </template>

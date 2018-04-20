@@ -48,23 +48,6 @@ export default{
     'tree-branch': branch
   },
   computed:{
-    // ico(){
-    //   let { base, prefix }=this.icons;
-    //   return Object.keys( this.icons ).reduce(( ret, key )=>{
-    //     if([ 'base', 'prefix'].indexOf( key ) < 0 ){
-    //       ret[ key ]=`${base} ${prefix}${this.icons[key]}`;
-    //     }
-    //     return ret;
-    //   }, {});
-    // },
-    activeNode:{
-      get(){
-
-      },
-      set( node ){
-
-      }
-    },
     treeNodes(){
       let { labelProp, nodesProp }=this;
       if( this.source ){
@@ -86,7 +69,6 @@ export default{
       return treeNode;
     },
     selectNode( id ){
-      console.log( 'select node', id );
       this.$emit( 'select', id );
     },
     setupIcons(){
@@ -95,7 +77,6 @@ export default{
       [ 'closed', 'open', 'expand', 'retract', 'leaf' ].forEach( n=>{
         this.$set( this.ico, n, `${base} ${prefix}${icons[n]}`)
       });
-      // console.log( 'setup icons in tree', this.ico )
     }
 
   },

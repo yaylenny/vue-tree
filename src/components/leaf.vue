@@ -6,24 +6,12 @@
       elbowIcon:{ type: [ String, Boolean ] },
       mainIcon: { type: String }
     },
-    data(){
-      return {
-        // 'tree-icon': TreeIcon
-      };
-    },
-    components:{},
-    computed:{
-      // emptyIconRange(){
-      //   return range( this.level );
-      // }
-    },
     methods:{
       onSelect(){
         this.$emit('select');
       },
       onToggle(){
         this.$emit('toggle', this.id );
-        console.log( 'leaf icon', this.elbowIcon )
       }
     },
     created(){},
